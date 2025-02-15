@@ -1,0 +1,119 @@
+
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>System Operacyjny</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      transition: background 0.5s ease;
+      background-size: cover;
+      background-position: center;
+    }
+    .login-container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      text-align: center;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .reset-link {
+      color: #007BFF;
+      cursor: pointer;
+      display: block;
+      margin-top: 10px;
+    }
+    .reset-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container" id="login-container">
+    <h2>Logowanie</h2>
+    
+    <div id="name-container">
+      <label for="username">Imię:</label>
+      <input type="text" id="username" placeholder="Wpisz swoje imię">
+      <button onclick="showPasswordInput()">Dalej</button>
+      <span class="reset-link" onclick="resetName()">Zapomniałeś imienia?</span>
+    </div>
+
+    <div id="password-container" style="display: none;">
+      <label for="password">Hasło:</label>
+      <input type="password" id="password" placeholder="Wpisz swoje hasło">
+      <button onclick="submitLogin()">Zaloguj się</button>
+      <span class="reset-link" onclick="resetPassword()">Zapomniałeś hasła?</span>
+    </div>
+  </div>
+
+  <script>
+    function showPasswordInput() {
+      const name = document.getElementById('username').value.trim();
+      if (name === "") {
+        alert("Proszę podać swoje imię!");
+      } else {
+        document.getElementById('name-container').style.display = 'none';
+        document.getElementById('password-container').style.display = 'block';
+      }
+    }
+
+    function submitLogin() {
+      const password = document.getElementById('password').value.trim();
+      if (password === "") {
+        alert("Proszę podać hasło!");
+      } else {
+        // Ukrywamy ekran logowania
+        document.getElementById('login-container').style.display = 'none';
+        // Zmieniamy tło na tapetę kota
+        document.body.style.background = 'url("image.png") no-repeat center center';
+        document.body.style.backgroundSize = 'cover';
+      }
+    }
+
+    function resetName() {
+      const newName = prompt("Podaj nowe imię:");
+      if (newName) {
+        document.getElementById('username').value = newName;
+      }
+    }
+
+    function resetPassword() {
+      const newPassword = prompt("Podaj nowe hasło:");
+      if (newPassword) {
+        document.getElementById('password').value = newPassword;
+      }
+    }
+  </script>
+</body>
+</html>.
+
